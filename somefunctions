@@ -1,0 +1,98 @@
+function Compute_Circle_Area (Radius : Float) return Float is
+   Pi : constant Float := 3.14159;
+begin
+   return Pi * Radius * Radius;
+end Compute_Circle_Area;
+
+-- Usage:
+Area := Compute_Circle_Area (5.0); -- Area of a circle with radius 5 units
+
+function Celsius_To_Fahrenheit (Celsius : Float) return Float is
+begin
+   return Celsius * 9.0 / 5.0 + 32.0;
+end Celsius_To_Fahrenheit;
+
+-- Usage:
+Temperature_F := Celsius_To_Fahrenheit (30.0); -- Convert 30°C to Fahrenheit
+
+function Fibonacci (N : Positive) return Integer is
+   A, B, Temp : Integer := 1;
+begin
+   for I in 2 .. N loop
+      Temp := A + B;
+      A := B;
+      B := Temp;
+   end loop;
+   return A;
+end Fibonacci;
+
+-- Usage:
+Fib_Number := Fibonacci (10); -- Tenth Fibonacci number
+
+function Reverse_String (Str : String) return String is
+   Result : String (1 .. Str'Length);
+begin
+   for I in Str'Range loop
+      Result (Str'Length - I + 1) := Str (I);
+   end loop;
+   return Result;
+end Reverse_String;
+
+-- Usage:
+Reversed := Reverse_String ("hello"); -- "olleh"
+
+function Is_Prime (Number : Positive) return Boolean is
+begin
+   if Number <= 1 then
+      return False;
+   end if;
+   for I in 2 .. Number / 2 loop
+      if Number mod I = 0 then
+         return False;
+      end if;
+   end loop;
+   return True;
+end Is_Prime;
+
+-- Usage:
+Prime_Status := Is_Prime (29); -- True, since 29 is a prime number
+
+function Days_To_Seconds (Days : Positive) return Integer is
+begin
+   return Days * 24 * 60 * 60;
+end Days_To_Seconds;
+
+-- Usage:
+Seconds := Days_To_Seconds (7); -- Number of seconds in a week
+
+function Generate_Password (Length : Positive) return String is
+   Characters : constant String := "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+   Result : String (1 .. Length);
+begin
+   for I in Result'Range loop
+      Result (I) := Characters ((Characters'First + Ada.Numerics.Discrete_Random (Characters'Length - 1)));
+   end loop;
+   return Result;
+end Generate_Password;
+
+-- Usage:
+Password := Generate_Password (12); -- Generate a 12-character random password
+
+function Decimal_To_Binary (Decimal : Positive) return String is
+   Result : String := (1 .. 32 => '0');
+   Temp : Integer := Decimal;
+   Index : Integer := Result'Last;
+begin
+   while Temp > 0 loop
+      if Temp mod 2 = 1 then
+         Result (Index) := '1';
+      end if;
+      Temp := Temp / 2;
+      Index := Index - 1;
+   end loop;
+   return Result (Index + 1 .. Result'Last);
+end Decimal_To_Binary;
+
+-- Usage:
+Binary_Str := Decimal_To_Binary (255); -- Binary representation of 255
+
