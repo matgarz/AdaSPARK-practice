@@ -1,3 +1,4 @@
+with Ada.Text_IO; use Ada.Text_IO;
 function Compute_Circle_Area (Radius : Float) return Float is
    Pi : constant Float := 3.14159;
 begin
